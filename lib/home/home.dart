@@ -7,18 +7,25 @@ class Home extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(userNotifierProvider);
+    final data = ref.watch(userDataNotifierProvider);
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Home Page'),
+      ),
       body: ListView(
         children: [
           data.when(
               data: (d) {
                 return Column(
                   children: [
-                    ...d.map((e) => ListTile(
-                          leading: CircleAvatar(
-                              backgroundImage: NetworkImage(e.avatar)),
-                        ))
+                    ...d.map(
+                      (e) => ListTile(
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(e.avatar),
+                        ),
+                        title: Text("${e.firstNAme} ${e.lastName}"),
+                      ),
+                    ),
                   ],
                 );
               },

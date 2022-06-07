@@ -25,6 +25,6 @@ class UserDetailRepositoryImpl extends UserDetailRepository {
   }
 }
 
-final userDataDetailsProvider = Provider<UserDetailRepository>((ref) {
+final userDetailsRepoProvider = Provider<UserDetailRepository>((ref) {
   return UserDetailRepositoryImpl(ref.watch(userDetailDataProvider));
 });

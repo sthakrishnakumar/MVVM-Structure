@@ -6,5 +6,5 @@ import 'package:new_structure_learning/features/users/data/user_repositories/use
 
 final getUserProvider =
     FutureProvider<Either<AppError, List<UserModel>>>((ref) async {
-  return UserRepositoryImpl().getUser();
+  return ref.watch(userRepositoryProvider).getUser();
 });

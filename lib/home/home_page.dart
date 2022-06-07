@@ -12,7 +12,11 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
+      appBar: AppBar(
+        title: const Text('User Page'),
+      ),
+      body: ListView(
+        shrinkWrap: true,
         children: const [
           UserListPage(),
         ],

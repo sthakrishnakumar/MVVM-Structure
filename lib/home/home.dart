@@ -7,31 +7,23 @@ class Home extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(getUserProvider);
+    final data = ref.watch(userNotifierProvider);
     return Scaffold(
       body: ListView(
         children: [
           data.when(
               data: (d) {
-                return d.fold(
-                  (l) => Text(l.message),
-                  (r) {
-                    return Column(
-                      children: [
-                        ...r.map(
-                          (e) => ListTile(
-                            title: Text(e.firstNAme),
-                            leading: Image.network(e.avatar),
-                            subtitle: Text(e.lastName),
-                          ),
-                        ),
-                      ],
-                    );
-                  },
+                return Column(
+                  children: [
+                    ...d.map((e) => ListTile(
+                          leading: CircleAvatar(
+                              backgroundImage: NetworkImage(e.avatar)),
+                        ))
+                  ],
                 );
               },
               error: (err, s) => Text(err.toString()),
-              loading: () => const CircularProgressIndicator()),
+              loading: () => const Center(child: CircularProgressIndicator())),
         ],
       ),
     );

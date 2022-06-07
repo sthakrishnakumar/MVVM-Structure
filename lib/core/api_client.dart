@@ -1,15 +1,15 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_structure_learning/commons/config.dart';
-import 'package:new_structure_learning/features/users/data/models/user_model.dart';
 
 class ApiClient {
-  Future<List<UserModel>> getUsers() async {
-    final result = await Dio(
-      BaseOptions(baseUrl: Config.baseUrl),
-    ).get(Config.endpoint);
-    List data = result.data;
-    return data.map((e) => UserModel.fromJson(e)).toList();
-  }
+  // Future<List<UserModel>> getUsers() async {
+  //   final result = await Dio(
+  //     BaseOptions(baseUrl: Config.baseUrl),
+  //   ).get(Config.endpoint);
+  //   List data = result.data;
+  //   return data.map((e) => UserModel.fromJson(e)).toList();
+  // }
 
   Future request({
     required String path,
@@ -28,3 +28,7 @@ class ApiClient {
     }
   }
 }
+
+final apiClientProvider = Provider<ApiClient>((ref) {
+  return ApiClient();
+});

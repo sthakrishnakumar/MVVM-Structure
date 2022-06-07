@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_structure_learning/commons/config.dart';
+import 'package:new_structure_learning/core/app_error.dart';
 
 class ApiClient {
   // Future<List<UserModel>> getUsers() async {
@@ -24,7 +25,7 @@ class ApiClient {
           : await dio.post(path, data: data);
       return result.data;
     } on DioError catch (e) {
-      throw Exception(e.message);
+      throw DioException.fromDioError(e);
     }
   }
 }

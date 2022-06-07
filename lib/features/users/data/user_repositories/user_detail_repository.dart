@@ -1,7 +1,7 @@
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_structure_learning/commons/app_error.dart';
+import 'package:new_structure_learning/core/app_error.dart';
 import 'package:new_structure_learning/features/users/data/data_sources/user_detail_data_source.dart';
 import 'package:new_structure_learning/features/users/data/models/user_model.dart';
 
@@ -17,9 +17,9 @@ class UserDetailRepositoryImpl extends UserDetailRepository {
     try {
       final result = await _userDetailDataSource.getUserDetail(id);
       return Right(result);
-    } on DioError catch (e) {
+    } on DioException catch (e) {
       return Left(
-        AppError(message: e.message),
+        AppError(message: e.message!),
       );
     }
   }

@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_structure_learning/features/users/controller/user_controller.dart';
@@ -21,7 +24,15 @@ class Home extends ConsumerWidget {
                   children: [
                     ...d.map(
                       (e) => InkWell(
-                        onTap: () => UserDetailsPage(id: e.id),
+                        onTap: () {
+                          log('hello');
+                          Navigator.push(
+                            context,
+                            CupertinoPageRoute(
+                              builder: (context) => UserDetailsPage(id: e.id),
+                            ),
+                          );
+                        },
                         child: ListTile(
                           leading: CircleAvatar(
                             backgroundImage: NetworkImage(e.avatar),

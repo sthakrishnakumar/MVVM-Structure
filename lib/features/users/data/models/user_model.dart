@@ -39,11 +39,11 @@ class UserDetailModel {
 
   factory UserDetailModel.fromJson(Map<String, dynamic> map) {
     return UserDetailModel(
-      id: map['id'] as int,
-      email: map['email'] as String,
-      firstNAme: map['first_name'] as String,
-      lastName: map['last_name'] as String,
-      avatar: map['avatar'] as String,
+      id: map['id'] ?? 0,
+      email: map['email'] ?? "hello",
+      firstNAme: map['first_name'] ?? "bro",
+      lastName: map['last_name'] ?? "123",
+      avatar: map['avatar'] ?? "system",
     );
   }
 }

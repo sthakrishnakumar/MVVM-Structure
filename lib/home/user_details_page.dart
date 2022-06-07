@@ -16,17 +16,23 @@ class UserDetailsPage extends ConsumerWidget {
       body: Container(
         child: data.when(
           data: (d) {
-            return Column(
-              children: [
-                Text(d.id.toString()),
-                Text(d.email),
-                Text(d.lastName),
-                Text(d.email),
-              ],
+            return Padding(
+              padding: const EdgeInsets.only(left: 50),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Your ID is ${d.id}"),
+                  Text("Email is ${d.email}"),
+                  Text("First Name is ${d.firstNAme}"),
+                  Text("Last Name is ${d.lastName}"),
+                ],
+              ),
             );
           },
           error: (err, s) => Text(err.toString()),
-          loading: () => const CircularProgressIndicator(),
+          loading: () => const Center(
+            child: CircularProgressIndicator(),
+          ),
         ),
       ),
     );

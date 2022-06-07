@@ -13,7 +13,7 @@ class UserDetailDataSourceImpl extends UserDetailDataSource {
   @override
   Future<UserDetailModel> getUserDetail(int id) async {
     final result = await _apiClient.request(path: "${Config.endpoint}/$id");
-    return UserDetailModel.fromJson(result);
+    return UserDetailModel.fromJson(result["data"]);
   }
 }
 

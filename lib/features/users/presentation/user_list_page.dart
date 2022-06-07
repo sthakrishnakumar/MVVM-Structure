@@ -11,9 +11,9 @@ class UserListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(userDataNotifierProvider);
+    final data = ref.watch(userStateNotifierProvider);
     return RefreshIndicator(
-      onRefresh: () async => ref.refresh(userDataNotifierProvider),
+      onRefresh: () async => ref.refresh(userStateNotifierProvider),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Home Page'),

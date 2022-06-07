@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:new_structure_learning/features/users/controller/user_controller.dart';
 
+// ignore: must_be_immutable
 class UserDetailsPage extends ConsumerWidget {
   UserDetailsPage({Key? key, required this.id}) : super(key: key);
   int id;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final data = ref.watch(userDetailsNotifierProvider(id));
+    final data = ref.watch(userDetailStateNotifierProvider(id));
     return RefreshIndicator(
-      onRefresh: () async => ref.refresh(userDetailsNotifierProvider(id)),
+      onRefresh: () async => ref.refresh(userDetailStateNotifierProvider(id)),
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Details Page'),

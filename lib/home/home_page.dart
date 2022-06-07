@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:new_structure_learning/home/user_list_page.dart';
+import 'package:new_structure_learning/features/users/presentation/user_list_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
